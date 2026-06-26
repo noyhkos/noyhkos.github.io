@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>김석현 — Frontend Engineer</title>
+<meta name="description" content="실시간 데이터를 다루는 화면을 만드는 프론트엔드 개발자. 김석현(emile) 포트폴리오." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=JetBrains+Mono:ital,wght@0,400..700;1,400..600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #efe9dc;
+    --paper-2: #e7e0d0;
+    --ink: #1a1613;
+    --ink-soft: #4a4138;
+    --ink-faint: #8a7f70;
+    --vermillion: #d23a1a;
+    --vermillion-deep: #a82c11;
+    --line: #c9bca5;
+    --line-soft: #d7ccb6;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --serif: 'Fraunces', Georgia, serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background-color: var(--paper);
+    background-image:
+      linear-gradient(rgba(26,22,19,0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26,22,19,0.045) 1px, transparent 1px);
+    background-size: 32px 32px;
+    background-position: -1px -1px;
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* paper grain overlay */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.18;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+  }
+
+  .wrap {
+    position: relative;
+    z-index: 2;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  a { color: inherit; }
+
+  /* ---------- top meta bar ---------- */
+  .topbar {
+    border-bottom: 1.5px solid var(--ink);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .topbar .wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  .topbar b { color: var(--ink); font-weight: 600; }
+  .blink { color: var(--vermillion); animation: blink 1.4s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* ---------- section scaffolding ---------- */
+  section { position: relative; padding: 0 0 96px; }
+
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    border-bottom: 1px solid var(--line);
+    padding: 80px 0 14px;
+    margin-bottom: 40px;
+  }
+  .sec-num {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--vermillion);
+    font-weight: 600;
+  }
+  .sec-title {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 500;
+  }
+  .sec-spec {
+    margin-left: auto;
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+  }
+
+  /* ---------- hero ---------- */
+  .hero { padding-top: 64px; }
+
+  .hero-tag {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 26px;
+  }
+  .hero-tag::before {
+    content: "";
+    width: 30px; height: 1.5px;
+    background: var(--vermillion);
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 350;
+    font-size: clamp(44px, 8vw, 94px);
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+  .hero h1 .name-ko { font-weight: 500; }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--vermillion);
+    font-weight: 300;
+  }
+
+  .hero-sub {
+    font-family: var(--serif);
+    font-size: clamp(18px, 2.5vw, 25px);
+    font-weight: 300;
+    line-height: 1.35;
+    max-width: 720px;
+    margin: 30px 0 0;
+    color: var(--ink);
+  }
+  .hero-sub b { color: var(--vermillion-deep); font-weight: 500; font-style: italic; }
+
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 28px;
+    margin-top: 40px;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--ink-soft);
+  }
+  .hero-meta a {
+    text-decoration: none;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 2px;
+    transition: border-color .2s, color .2s;
+  }
+  .hero-meta a:hover { color: var(--vermillion); border-color: var(--vermillion); }
+  .hero-meta .k { color: var(--ink-faint); }
+
+  /* measurement strip */
+  .measure {
+    margin-top: 56px;
+    height: 26px;
+    border-left: 1px solid var(--ink);
+    border-right: 1px solid var(--ink);
+    position: relative;
+    color: var(--ink-faint);
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+  }
+  .measure::before {
+    content: "";
+    position: absolute;
+    top: 50%; left: 0; right: 0;
+    border-top: 1px dashed var(--line);
+  }
+  .measure span {
+    position: absolute;
+    top: -2px;
+    background: var(--paper);
+    padding: 0 8px;
+    transform: translateY(-100%);
+  }
+  .measure .m1 { left: 0; }
+  .measure .m2 { left: 50%; transform: translate(-50%, -100%); }
+  .measure .m3 { right: 0; }
+
+  /* ---------- intro ---------- */
+  .intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 48px;
+  }
+  .intro-grid p {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.55;
+  }
+  .intro-grid p + p { margin-top: 18px; }
+  .intro-side {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+  .intro-side .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .intro-side .row .k { color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.08em; font-size: 10.5px; }
+  .intro-side .row .v { text-align: right; color: var(--ink); }
+
+  /* ---------- projects ---------- */
+  .proj {
+    border-top: 1px solid var(--ink);
+    padding: 34px 0;
+    display: grid;
+    grid-template-columns: 88px 1fr;
+    gap: 28px;
+  }
+  .proj:last-of-type { border-bottom: 1px solid var(--ink); }
+  .proj-idx {
+    font-size: 12px;
+    color: var(--vermillion);
+    letter-spacing: 0.1em;
+    font-weight: 600;
+  }
+  .proj-idx .status {
+    display: block;
+    margin-top: 10px;
+    font-size: 9.5px;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+  }
+  .proj-idx .status.shipped { color: var(--ink); }
+  .proj-idx .status.shipped::before {
+    content: "● ";
+    color: var(--vermillion);
+  }
+  .proj-idx .status.dev::before { content: "◐ "; color: var(--ink-faint); }
+
+  .proj-body h3 {
+    font-family: var(--serif);
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.015em;
+    margin-bottom: 4px;
+  }
+  .proj-body .role {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-faint);
+    margin-bottom: 22px;
+  }
+
+  .pq {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 6px 20px;
+    padding: 11px 0;
+    border-top: 1px solid var(--line-soft);
+  }
+  .pq .lab {
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--vermillion-deep);
+    padding-top: 3px;
+  }
+  .pq .txt { font-size: 15px; line-height: 1.65; color: var(--ink-soft); }
+  .pq .txt b { color: var(--ink); font-weight: 600; }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin: 20px 0 4px;
+  }
+  .tags span {
+    font-size: 10.5px;
+    letter-spacing: 0.03em;
+    padding: 4px 9px;
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    background: rgba(255,255,255,0.22);
+  }
+
+  /* Tiro sub-projects */
+  .subproj { padding: 15px 0; border-top: 1px solid var(--line-soft); }
+  .subproj:first-of-type { border-top: none; padding-top: 4px; }
+  .sp-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 7px; }
+  .sp-name { font-family: var(--serif); font-size: 20px; font-weight: 500; letter-spacing: -0.01em; }
+  .sp-head a { font-size: 11.5px; color: var(--vermillion); text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 1px; transition: border-color .2s; }
+  .sp-head a:hover { border-color: var(--vermillion); }
+  .subproj p { font-size: 15px; line-height: 1.65; color: var(--ink-soft); }
+  .subproj p b { color: var(--ink); font-weight: 600; }
+  .subproj .tags { margin: 11px 0 0; }
+
+  .plinks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin-top: 18px;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+  }
+  .plinks a {
+    text-decoration: none;
+    color: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    border-bottom: 1.5px solid var(--vermillion);
+    padding-bottom: 3px;
+    transition: color .2s, transform .2s;
+  }
+  .plinks a:hover { color: var(--vermillion); transform: translateY(-1px); }
+  .plinks a .arr { transition: transform .2s; }
+  .plinks a:hover .arr { transform: translate(2px,-2px); }
+  .plinks a.muted { color: var(--ink-faint); border-bottom-color: var(--line); cursor: default; }
+
+  /* ---------- stack ---------- */
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 56px;
+  }
+  .stack-col .grp {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line-soft);
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 16px;
+    align-items: baseline;
+  }
+  .stack-col .grp .gk {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--vermillion-deep);
+  }
+  .stack-col .grp .gv { font-size: 14px; color: var(--ink-soft); line-height: 1.7; }
+  .stack-col .grp .gv b { color: var(--ink); font-weight: 600; }
+
+  /* ---------- footer ---------- */
+  footer {
+    border-top: 1.5px solid var(--ink);
+    margin-top: 40px;
+    padding: 56px 0 70px;
+  }
+  .foot-grid { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 28px; }
+  footer h2 {
+    font-family: var(--serif);
+    font-size: clamp(30px, 5vw, 52px);
+    font-weight: 350;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+  }
+  footer h2 em { font-style: italic; color: var(--vermillion); }
+  .foot-links { display: flex; flex-direction: column; gap: 9px; font-size: 13px; text-align: right; }
+  .foot-links a { text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 2px; transition: color .2s, border-color .2s; }
+  .foot-links a:hover { color: var(--vermillion); border-color: var(--vermillion); }
+  .foot-note {
+    margin-top: 46px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* ---------- reveal animation ---------- */
+  .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  .hero h1 .line { display: block; opacity: 0; transform: translateY(24px); animation: rise .9s cubic-bezier(.2,.75,.2,1) forwards; }
+  .hero h1 .line:nth-child(1) { animation-delay: .1s; }
+  .hero h1 .line:nth-child(2) { animation-delay: .24s; }
+  .hero-sub, .hero-meta, .measure { opacity: 0; transform: translateY(20px); animation: rise .9s cubic-bezier(.2,.75,.2,1) forwards; }
+  .hero-sub { animation-delay: .42s; }
+  .hero-meta { animation-delay: .56s; }
+  .measure { animation-delay: .68s; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 760px) {
+    .wrap { padding: 0 20px; }
+    .intro-grid { grid-template-columns: 1fr; gap: 30px; }
+    .proj { grid-template-columns: 1fr; gap: 14px; }
+    .proj-idx { display: flex; align-items: baseline; gap: 14px; }
+    .proj-idx .status { margin-top: 0; }
+    .pq { grid-template-columns: 1fr; gap: 2px; padding: 9px 0; }
+    .pq .lab { padding-top: 0; }
+    .stack-grid { grid-template-columns: 1fr; }
+    .sec-spec { display: none; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ===== top meta ===== -->
+  <div class="topbar">
+    <div class="wrap">
+      <div><b>김석현</b> · emile</div>
+      <div>프론트엔드 개발자 — 실시간 화면 · 대시보드</div>
+      <div>Seoul, KR</div>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <!-- ===== hero ===== -->
+    <header class="hero">
+      <div class="hero-tag">웹 · 데스크톱 · 모바일 프론트엔드</div>
+      <h1>
+        <span class="line">김<span class="name-ko">석현</span></span>
+        <span class="line"><em>프론트엔드 개발자</em></span>
+      </h1>
+      <p class="hero-sub">
+        웹·데스크톱·모바일 프론트엔드를 만들어 왔습니다. Tiro에서 <b>실시간 전사 화면과 관리자 대시보드</b>를 맡았고, 개인적으로 만든 앱들을 App Store와 웹에 직접 출시했습니다.
+      </p>
+      <div class="hero-meta">
+        <span><span class="k">GITHUB</span> <a href="https://github.com/noyhkos" target="_blank" rel="noopener">github.com/noyhkos</a></span>
+        <span><span class="k">EMAIL</span> <a href="mailto:skhn00j@gmail.com">skhn00j@gmail.com</a></span>
+        <span><span class="k">BASE</span> 서울</span>
+        <span><span class="k">EDU</span> 성균관대 전자전기 · SSAFY 13기</span>
+      </div>
+    </header>
+
+    <!-- ===== intro ===== -->
+    <section>
+      <div class="sec-head reveal">
+        <span class="sec-num">01</span>
+        <span class="sec-title">소개</span>
+        <span class="sec-spec"></span>
+      </div>
+      <div class="intro-grid">
+        <div class="reveal">
+          <p>전자공학을 전공하고 SSAFY에서 개발을 시작했습니다.</p>
+          <p>회사에서는 Tiro의 프론트엔드를, 회사 밖에서는 필요한 앱을 직접 만들어 출시해 왔습니다. 그중에서도 <em style="color:var(--vermillion-deep);font-style:normal">화면에 실시간으로 들어오는 데이터를 안정적으로 다루는 작업</em>에 특히 집중해 왔습니다.</p>
+        </div>
+        <div class="intro-side reveal">
+          <div class="row"><span class="k">분야</span><span class="v">프론트엔드 · 풀스택</span></div>
+          <div class="row"><span class="k">출시</span><span class="v">iOS · 데스크톱 · 웹</span></div>
+          <div class="row"><span class="k">경력</span><span class="v">Tiro (AI SaaS) · 6개월</span></div>
+          <div class="row"><span class="k">전공</span><span class="v">성균관대 전자전기 · SSAFY 13기</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== projects ===== -->
+    <section>
+      <div class="sec-head reveal">
+        <span class="sec-num">02</span>
+        <span class="sec-title">경력 · 작업</span>
+        <span class="sec-spec"></span>
+      </div>
+
+      <!-- Tiro (field experience) -->
+      <article class="proj reveal">
+        <div class="proj-idx">
+          경력
+          <span class="status shipped">Tiro · 6개월</span>
+        </div>
+        <div class="proj-body">
+          <h3>더플레이토 — Tiro</h3>
+          <div class="role">Frontend Engineer · AI 실시간 전사 SaaS · 2025.08–2026.01</div>
+
+          <div class="subproj">
+            <div class="sp-head"><span class="sp-name">개발자 센터</span><a href="https://platform.tiro.ooo" target="_blank" rel="noopener">platform.tiro.ooo ↗</a></div>
+            <p>Tiro의 API·Webhook을 관리하는 <b>개발자 콘솔</b>을 기획·설계·배포까지 단독으로 맡았습니다. Clean Architecture(Repository·DI) 위에 TanStack Query로 서버 상태를 캐싱·동기화하고, <b>낙관적 업데이트</b>로 불필요한 API 호출을 줄였습니다. SSR 인증(Google·Microsoft·Apple)과 shadcn/ui 디자인 시스템을 구축해 <b>10개 페이지를 단독으로 배포</b>했습니다.</p>
+            <div class="tags"><span>Next.js</span><span>React Query</span><span>shadcn/ui</span><span>SSR Auth</span><span>Clean Arch</span></div>
+          </div>
+
+          <div class="subproj">
+            <div class="sp-head"><span class="sp-name">컨퍼런스 모드</span><a href="https://tiro.ooo" target="_blank" rel="noopener">tiro.ooo ↗</a></div>
+            <p>끊임없이 갱신되는 <b>실시간 음성 전사·번역 스트림</b>을 다국어로 나란히 렌더링하는 컨퍼런스 뷰를 만들었습니다. 완료 단락과 스트리밍 단락을 MobX observable로 분리해 잦은 리렌더링에도 <b>스크롤 위치가 흔들리지 않게</b> 했고, 자동 스크롤·폰트 조절 등 장시간 모니터링에 필요한 UX를 다듬었습니다.</p>
+            <div class="tags"><span>MobX</span><span>실시간 스트리밍</span><span>렌더링 최적화</span></div>
+          </div>
+
+          <div class="subproj">
+            <div class="sp-head"><span class="sp-name">팀 사용량 대시보드</span><a href="https://tiro.ooo" target="_blank" rel="noopener">tiro.ooo ↗</a></div>
+            <p>팀 관리자가 <b>기간별·구성원별 사용량</b>을 조회하는 관리 화면을 만들었습니다. recharts로 시계열 추이를 그리고, 구성원별 집계 테이블을 함께 제공했습니다.</p>
+            <div class="tags"><span>recharts</span><span>데이터 시각화</span><span>Admin UI</span></div>
+          </div>
+
+          <div class="subproj">
+            <div class="sp-head"><span class="sp-name">테스트 인프라</span><span style="font-size:11.5px;color:var(--ink-faint);letter-spacing:0.02em">Tiro Client</span></div>
+            <p>빠르게 기능이 늘어나는 클라이언트에서 회귀를 막기 위해 <b>Vitest + React Testing Library</b>로 테스트 인프라를 만들었습니다. 컴포넌트·서비스·유틸리티를 계층별로 검증해 <b>Usecases·Utils 80% 이상 커버리지</b>를 확보했습니다.</p>
+            <div class="tags"><span>Vitest</span><span>React Testing Library</span><span>80%+ coverage</span></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Scrollmate -->
+      <article class="proj reveal">
+        <div class="proj-idx">
+          02—A
+          <span class="status shipped">App Store</span>
+        </div>
+        <div class="proj-body">
+          <h3>Scrollmate</h3>
+          <div class="role">iOS · Swift 6 · 1인 개발 · 8개 언어 현지화</div>
+          <div class="pq"><span class="lab">Problem</span><span class="txt">잠깐 보려던 것이 길어지는 무한 스크롤. 기존 스크린타임 앱은 <b>강제로 차단</b>하거나 구독을 요구했습니다.</span></div>
+          <div class="pq"><span class="lab">Challenge</span><span class="txt">강제로 차단하는 대신 사용자가 스스로 멈추도록 부드럽게 알려주는 방식을 택했습니다. 앱·홈위젯·컨트롤센터·잠금화면 <b>4개 진입점이 두 프로세스에 나뉘어</b> 있어, 백엔드 없이 상태를 맞추는 게 핵심 과제였습니다.</span></div>
+          <div class="pq"><span class="lab">Solution</span><span class="txt">App Group(UserDefaults + atomic mirror)을 상태의 기준점으로 삼고, <b>SyncEngine 한 곳에서만 상태를 바꾸도록</b> 만들어 해결했습니다. iOS 18 크로스프로세스 리로드의 시스템 제약과 내가 개선할 수 있는 부분을 나눠서 기록했습니다.</span></div>
+          <div class="tags"><span>Swift 6</span><span>SwiftUI</span><span>WidgetKit</span><span>AppIntents</span><span>ControlWidget</span><span>StoreKit 2</span><span>Zero deps</span></div>
+          <div class="plinks">
+            <a href="https://apps.apple.com/app/id6762578910" target="_blank" rel="noopener">App Store <span class="arr">↗</span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- daysmate -->
+      <article class="proj reveal">
+        <div class="proj-idx">
+          02—B
+          <span class="status shipped">Live</span>
+        </div>
+        <div class="proj-body">
+          <h3>daysmate</h3>
+          <div class="role">Full-stack monorepo · 1인 개발 · 403 commits</div>
+          <div class="pq"><span class="lab">Problem</span><span class="txt">생일·100일·기일 같은 소중한 날을 놓치지 않게 이메일·푸시로 리마인드하는 서비스. 단, <b>한국식 날짜 규칙</b>을 정확히 다뤄야 했습니다.</span></div>
+          <div class="pq"><span class="lab">Challenge</span><span class="txt">웹·모바일·백엔드를 혼자 <b>Turborepo 모노레포</b>로 묶고, <b>음력·윤달 매년 재계산</b>과 <b>D+ inclusive 카운팅</b>(당일=1일, 100일=시작+99일) 같은 까다로운 도메인 로직을 예외 상황까지 고려해 구현했습니다.</span></div>
+          <div class="pq"><span class="lab">Solution</span><span class="txt">타입·유틸·API를 packages로 분리해 웹과 모바일이 공유하도록 했습니다. <b>pg_cron 시간별 리마인더</b>, soft-delete 30일 유예, iCal 피드(안정 UID로 중복 제거), 타임존 처리까지 운영을 고려해 설계했습니다.</span></div>
+          <div class="tags"><span>Next.js 15</span><span>Expo / RN</span><span>Supabase</span><span>PostgreSQL</span><span>pg_cron</span><span>Turborepo</span><span>TypeScript</span></div>
+          <div class="plinks">
+            <a href="https://www.daysmate.com" target="_blank" rel="noopener">daysmate.com <span class="arr">↗</span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- download-mate -->
+      <article class="proj reveal">
+        <div class="proj-idx">
+          02—C
+          <span class="status shipped">Released</span>
+        </div>
+        <div class="proj-body">
+          <h3>download-mate</h3>
+          <div class="role">Desktop · Electron · 코드 서명 + 공증</div>
+          <div class="pq"><span class="lab">Problem</span><span class="txt">영상·오디오를 받는 데스크톱 도구가 필요해서 직접 만들었습니다.</span></div>
+          <div class="pq"><span class="lab">Challenge</span><span class="txt">단순 스크립트가 아니라 <b>실제 배포 가능한 데스크톱 앱</b>으로 만들기로 했습니다. macOS·Windows 양쪽 빌드와 서명·공증 파이프라인을 구성했습니다.</span></div>
+          <div class="pq"><span class="lab">Solution</span><span class="txt">Electron + React + Vite로 구현하고, <b>macOS Developer ID 서명·공증과 Windows NSIS 설치 파일</b>까지 끝내 v1.0.0으로 릴리스했습니다. yt-dlp 자동 업데이트와 IPC prefetch를 포함했습니다.</span></div>
+          <div class="tags"><span>Electron</span><span>React</span><span>TypeScript</span><span>Vitest</span><span>electron-builder</span></div>
+          <div class="plinks">
+            <a href="https://github.com/noyhkos/download-mate" target="_blank" rel="noopener">GitHub <span class="arr">↗</span></a>
+          </div>
+        </div>
+      </article>    </section>
+
+    <!-- ===== stack ===== -->
+    <section>
+      <div class="sec-head reveal">
+        <span class="sec-num">03</span>
+        <span class="sec-title">기술</span>
+        <span class="sec-spec"></span>
+      </div>
+      <div class="stack-grid">
+        <div class="stack-col">
+          <div class="grp reveal"><span class="gk">Frontend</span><span class="gv"><b>TypeScript · React · Next.js</b> · MobX · TanStack Query · Tailwind · shadcn/ui</span></div>
+          <div class="grp reveal"><span class="gk">Cross-platform</span><span class="gv">Electron · React Native / Expo · Swift · SwiftUI</span></div>
+          <div class="grp reveal"><span class="gk">Backend</span><span class="gv"><b>Kotlin · Spring WebFlux</b> · Node · Supabase · PostgreSQL / MySQL</span></div>
+        </div>
+        <div class="stack-col">
+          <div class="grp reveal"><span class="gk">AI</span><span class="gv"><b>LangChain · RAG</b> · OpenAI · Python</span></div>
+          <div class="grp reveal"><span class="gk">Infra</span><span class="gv">AWS S3 · CloudFront · Vercel · Cloudflare · Docker</span></div>
+          <div class="grp reveal"><span class="gk">Practice</span><span class="gv"><b>Vitest 테스트</b> · 문서 기반 개발 · Claude Code · MCP 활용</span></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ===== footer ===== -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <h2 class="reveal">편하게 <em>연락 주세요.</em></h2>
+        <div class="foot-links reveal">
+          <a href="mailto:skhn00j@gmail.com">skhn00j@gmail.com</a>
+          <a href="https://github.com/noyhkos" target="_blank" rel="noopener">github.com/noyhkos</a>
+        </div>
+      </div>
+      <div class="foot-note">
+        <span>© 2026 김석현 (emile)</span>
+        <span>Seoul, KR</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // staggered scroll reveal
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          e.target.style.transitionDelay = Math.min(i * 60, 180) + 'ms';
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  </script>
+
+</body>
+</html>
