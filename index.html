@@ -502,14 +502,14 @@
 
           <div class="subproj">
             <div class="sp-head"><span class="sp-name">개발자 센터</span><a href="https://platform.tiro.ooo" target="_blank" rel="noopener">platform.tiro.ooo ↗</a></div>
-            <p>Tiro의 API·Webhook을 관리하는 <b>개발자 콘솔</b>을 기획·설계·배포까지 단독으로 맡았습니다. Clean Architecture(Repository·DI) 위에 TanStack Query로 서버 상태를 캐싱·동기화하고, <b>낙관적 업데이트</b>로 불필요한 API 호출을 줄였습니다. SSR 인증(Google·Microsoft·Apple)과 shadcn/ui 디자인 시스템을 구축해 <b>10개 페이지를 단독으로 배포</b>했습니다.</p>
+            <p>Tiro의 API·Webhook을 관리하는 <b>개발자 콘솔</b>을 기획·설계·배포까지 단독으로 맡았습니다. Clean Architecture(Repository·DI) 위에 TanStack Query로 서버 상태를 캐싱하고, <b>뮤테이션 후 관련 쿼리를 무효화</b>해 화면을 항상 최신 상태로 유지했습니다. SSR 인증(Google·Microsoft·Apple)과 shadcn/ui 디자인 시스템을 구축해 <b>10개 페이지를 단독으로 배포</b>했습니다.</p>
             <div class="tags"><span>Next.js</span><span>React Query</span><span>shadcn/ui</span><span>SSR Auth</span><span>Clean Arch</span></div>
           </div>
 
           <div class="subproj">
             <div class="sp-head"><span class="sp-name">컨퍼런스 모드</span><a href="https://tiro.ooo" target="_blank" rel="noopener">tiro.ooo ↗</a></div>
-            <p>끊임없이 갱신되는 <b>실시간 음성 전사·번역 스트림</b>을 다국어로 나란히 렌더링하는 컨퍼런스 뷰를 만들었습니다. 완료 단락과 스트리밍 단락을 MobX observable로 분리해 잦은 리렌더링에도 <b>스크롤 위치가 흔들리지 않게</b> 했고, 자동 스크롤·폰트 조절 등 장시간 모니터링에 필요한 UX를 다듬었습니다.</p>
-            <div class="tags"><span>MobX</span><span>실시간 스트리밍</span><span>렌더링 최적화</span></div>
+            <p>다국어 회의 음성을 실시간 전사·번역해 자막으로 보여주는 화면의 <b>초기 구현</b>을 맡았습니다. 텍스트가 초당 수십 번 갱신돼 매번 스크롤이 튀는 문제를, 단락마다 고유 식별자(UUID)를 부여해 <b>단락이 바뀔 때만 스크롤이 작동하도록 데이터 갱신과 스크롤 트리거를 분리</b>해 해결했습니다. 화면이 맨 아래에서 <b>200px 이내일 때만 자동 스크롤</b>이 켜지도록 잠그고, easeOutCubic·requestAnimationFrame으로 부드럽게 감속시켰습니다. 장시간 모니터링을 위한 폰트 크기 조절 UI도 함께 만들었습니다.</p>
+            <div class="tags"><span>실시간 스트리밍</span><span>스크롤 트리거 분리</span><span>requestAnimationFrame</span><span>MobX</span></div>
           </div>
 
           <div class="subproj">
@@ -559,6 +559,7 @@
           <div class="pq"><span class="lab">Solution</span><span class="txt">타입·유틸·API를 packages로 분리해 웹과 모바일이 공유하도록 했습니다. <b>pg_cron 시간별 리마인더</b>, soft-delete 30일 유예, iCal 피드(안정 UID로 중복 제거), 타임존 처리까지 운영을 고려해 설계했습니다.</span></div>
           <div class="tags"><span>Next.js 15</span><span>Expo / RN</span><span>Supabase</span><span>PostgreSQL</span><span>pg_cron</span><span>Turborepo</span><span>TypeScript</span></div>
           <div class="plinks">
+            <a href="https://apps.apple.com/app/daysmate/id6782251580" target="_blank" rel="noopener">App Store <span class="arr">↗</span></a>
             <a href="https://www.daysmate.com" target="_blank" rel="noopener">daysmate.com <span class="arr">↗</span></a>
           </div>
         </div>
@@ -581,7 +582,27 @@
             <a href="https://github.com/noyhkos/download-mate" target="_blank" rel="noopener">GitHub <span class="arr">↗</span></a>
           </div>
         </div>
-      </article>    </section>
+      </article>
+
+      <!-- beebli (team contribution) -->
+      <article class="proj reveal">
+        <div class="proj-idx">
+          02—D
+          <span class="status shipped">App Store · 팀</span>
+        </div>
+        <div class="proj-body">
+          <h3>비블리 (BeeLit)</h3>
+          <div class="role">EdTech 독서 퀴즈 앱 · 프론트엔드 기여 · 팀 프로젝트</div>
+          <div class="pq"><span class="lab">Context</span><span class="txt">스타트업이 만드는 <b>어린이 독서 퀴즈 앱</b>(App Store·Play 출시). 메인 개발자가 있는 공유 코드베이스에서 <b>일부 기능을 맡아</b> PR 리뷰를 거쳐 라이브 서비스에 반영했습니다.</span></div>
+          <div class="pq"><span class="lab">Owned</span><span class="txt"><b>포인트(XP) 게이미피케이션 시스템</b>을 화면부터 서버 검증까지 맡았습니다. 레벨 곡선·최고 점수 추적을 설계하고, Supabase 엣지 함수로 퀴즈 결과를 <b>서버에서 검증해 XP를 지급</b>한 뒤 결과 화면에 축하 애니메이션을 붙였습니다.</span></div>
+          <div class="pq"><span class="lab">Owned</span><span class="txt"><b>친구 초대(리퍼럴) 프로그램</b>을 코드 발급부터 다중 화면 초대 플로우, 상태 전이 UI, 10명 상한·공유/UTM 처리까지 구현했습니다.</span></div>
+          <div class="tags"><span>React Native</span><span>Expo</span><span>Supabase Edge Functions</span><span>TypeScript</span><span>팀 협업 · PR</span></div>
+          <div class="plinks">
+            <a href="https://apps.apple.com/app/id6755333776" target="_blank" rel="noopener">App Store <span class="arr">↗</span></a>
+          </div>
+        </div>
+      </article>
+    </section>
 
     <!-- ===== stack ===== -->
     <section>
