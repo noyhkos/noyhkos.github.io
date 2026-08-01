@@ -526,10 +526,31 @@
         </div>
       </article>
 
-      <!-- Scrollmate -->
+      <!-- teamwork-mate / 팀사주 -->
       <article class="proj reveal">
         <div class="proj-idx">
           02—A
+          <span class="status shipped">Live</span>
+        </div>
+        <div class="proj-body">
+          <h3>팀사주 (TeamworkMate)</h3>
+          <div class="role">Full-stack · 1인 개발 · 폴리레포 4개 · 테스트 99개</div>
+          <div class="pq"><span class="lab">Problem</span><span class="txt">팀을 짤 때 누가 무슨 역할을 맡을지는 늘 감으로 정해집니다. 사주와 MBTI를 조합해 역할·궁합·팀 밸런스를 뽑아주는 <b>재미용 리포트</b>를 만들되, 그 뒤를 <b>백엔드·인프라를 제대로 다뤄보는 과제</b>로 삼았습니다.</span></div>
+          <div class="pq"><span class="lab">Challenge</span><span class="txt">분석 한 건이 사주 계산·점수·문구 생성까지 <b>1분</b>이 걸려 HTTP 응답이 47초까지 늘어졌습니다. 또 하나는 LLM이 <b>사주적으로 그럴듯하지만 우리 점수와는 무관한 문장</b>을 만들어내는 문제였습니다 — 설명과 계산이 어긋나면 리포트 전체의 신뢰가 무너집니다.</span></div>
+          <div class="pq"><span class="lab">Solution</span><span class="txt">작업을 <b>SQS로 분리</b>해 요청은 202로 즉시 반환하고(1.2초) 워커가 뒤에서 처리합니다. 메시지는 작업이 끝난 뒤에만 삭제해 워커가 죽어도 재처리되고, 3회 실패하면 DLQ로 격리됩니다. 점수는 <b>전부 결정론 공식</b>이고 모든 가감점이 근거와 함께 기록돼 리포트에 그대로 노출됩니다. LLM에는 <b>점수에 실제로 기여한 사실만</b> 넘기고, 생성 모델과 <b>다른 모델</b>이 문장별 주장을 근거와 대조해 통과한 것만 서빙합니다. 판정이 실패하면 결정론 템플릿으로 내려앉아 <b>검증되지 않은 문장은 나가지 않습니다</b>.</span></div>
+          <div class="pq"><span class="lab">Frontend</span><span class="txt">컴포넌트 라이브러리 없이 <b>디자인 시스템을 직접 만들었습니다</b>(토큰·프리미티브 7종·문서·라이브 레퍼런스 페이지). 모바일에서 실제로 깨진 것들을 규칙으로 박아뒀습니다 — <b>iOS Safari는 16px 미만 입력에 포커스가 가면 페이지를 확대하고 되돌리지 않아</b> 모든 컨트롤을 16px로 고정했고, 탭 타겟 44px은 패딩이 아니라 높이로 강제했습니다. 대기실은 팀원이 들어오는 구간에도 폴링하고, 리포트 생성 후 명단이 바뀌면 <b>집합 비교</b>로 감지해 재분석을 제안합니다.</span></div>
+          <div class="tags"><span>Kotlin</span><span>Spring Boot 4</span><span>PostgreSQL</span><span>AWS Lambda</span><span>SQS / DLQ</span><span>AWS CDK</span><span>Next.js 16</span><span>Tailwind v4</span><span>LLM 평가</span><span>디자인 시스템</span></div>
+          <div class="plinks">
+            <a href="https://teamsaju.com" target="_blank" rel="noopener">teamsaju.com <span class="arr">↗</span></a>
+            <a href="https://github.com/noyhkos/teamwork-mate-api" target="_blank" rel="noopener">GitHub <span class="arr">↗</span></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Scrollmate -->
+      <article class="proj reveal">
+        <div class="proj-idx">
+          02—B
           <span class="status shipped">App Store</span>
         </div>
         <div class="proj-body">
@@ -548,7 +569,7 @@
       <!-- daysmate -->
       <article class="proj reveal">
         <div class="proj-idx">
-          02—B
+          02—C
           <span class="status shipped">Live</span>
         </div>
         <div class="proj-body">
@@ -568,7 +589,7 @@
       <!-- download-mate -->
       <article class="proj reveal">
         <div class="proj-idx">
-          02—C
+          02—D
           <span class="status shipped">Released</span>
         </div>
         <div class="proj-body">
@@ -587,7 +608,7 @@
       <!-- beebli (team contribution) -->
       <article class="proj reveal">
         <div class="proj-idx">
-          02—D
+          02—E
           <span class="status shipped">App Store · 팀</span>
         </div>
         <div class="proj-body">
