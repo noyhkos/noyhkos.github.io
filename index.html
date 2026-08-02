@@ -498,7 +498,7 @@
         </div>
         <div class="proj-body">
           <h3>더플레이토 — Tiro</h3>
-          <div class="role">Frontend Engineer · AI 실시간 전사 SaaS · 2025.08–2026.01</div>
+          <div class="role">Client Engineer · AI 실시간 전사 SaaS · 2025.08–2026.01</div>
 
           <div class="subproj">
             <div class="sp-head"><span class="sp-name">개발자 센터</span><a href="https://platform.tiro.ooo" target="_blank" rel="noopener">platform.tiro.ooo ↗</a></div>
@@ -508,7 +508,7 @@
 
           <div class="subproj">
             <div class="sp-head"><span class="sp-name">컨퍼런스 모드</span><a href="https://tiro.ooo" target="_blank" rel="noopener">tiro.ooo ↗</a></div>
-            <p>다국어 회의 음성을 실시간 전사·번역해 자막으로 보여주는 화면의 <b>초기 구현</b>을 맡았습니다. 텍스트가 초당 수십 번 갱신돼 매번 스크롤이 튀는 문제를, 단락마다 고유 식별자(UUID)를 부여해 <b>단락이 바뀔 때만 스크롤이 작동하도록 데이터 갱신과 스크롤 트리거를 분리</b>해 해결했습니다. 화면이 맨 아래에서 <b>200px 이내일 때만 자동 스크롤</b>이 켜지도록 잠그고, easeOutCubic·requestAnimationFrame으로 부드럽게 감속시켰습니다. 장시간 모니터링을 위한 폰트 크기 조절 UI도 함께 만들었습니다.</p>
+            <p>다국어 회의 음성을 실시간 전사·번역해 자막으로 보여주는 화면의 <b>초기 구현</b>을 맡았습니다. 텍스트가 초당 수십 번 갱신돼 매번 스크롤이 튀는 문제를, <b>단락 UUID로 항목 키를 조합하고 마지막 키를 시그니처 삼아 데이터 갱신과 스크롤 트리거를 분리</b>해 해결했습니다. 화면이 맨 아래에서 <b>200px 이내일 때만 자동 스크롤</b>이 켜지도록 잠그고, easeOutCubic·requestAnimationFrame으로 부드럽게 감속시켰습니다. 장시간 모니터링을 위한 폰트 크기 조절 UI도 함께 만들었습니다.</p>
             <div class="tags"><span>실시간 스트리밍</span><span>스크롤 트리거 분리</span><span>requestAnimationFrame</span><span>MobX</span></div>
           </div>
 
@@ -520,8 +520,8 @@
 
           <div class="subproj">
             <div class="sp-head"><span class="sp-name">테스트 인프라</span><span style="font-size:11.5px;color:var(--ink-faint);letter-spacing:0.02em">Tiro Client</span></div>
-            <p>빠르게 기능이 늘어나는 클라이언트에서 회귀를 막기 위해 <b>Vitest + React Testing Library</b>로 테스트 인프라를 만들었습니다. 컴포넌트·서비스·유틸리티를 계층별로 검증해 <b>Usecases·Utils 80% 이상 커버리지</b>를 확보했습니다.</p>
-            <div class="tags"><span>Vitest</span><span>React Testing Library</span><span>80%+ coverage</span></div>
+            <p>빠르게 기능이 늘어나는 클라이언트에서 회귀를 막기 위해 <b>Vitest + React Testing Library</b>로 테스트 인프라를 만들었습니다. 컴포넌트·서비스·유틸리티를 계층별로 나눠 검증했습니다.</p>
+            <div class="tags"><span>Vitest</span><span>React Testing Library</span><span>계층별 검증</span></div>
           </div>
         </div>
       </article>
@@ -573,7 +573,7 @@
         </div>
         <div class="proj-body">
           <h3>daysmate</h3>
-          <div class="role">Full-stack monorepo · 1인 개발 · 403 commits</div>
+          <div class="role">Full-stack monorepo · 1인 개발 · 9주 · 404 commits</div>
           <div class="pq"><span class="lab">Problem</span><span class="txt">생일·100일·기일 같은 소중한 날을 놓치지 않게 이메일·푸시로 리마인드하는 서비스. 단, <b>한국식 날짜 규칙</b>을 정확히 다뤄야 했습니다.</span></div>
           <div class="pq"><span class="lab">Challenge</span><span class="txt">웹·모바일·백엔드를 혼자 <b>Turborepo 모노레포</b>로 묶고, <b>음력·윤달 매년 재계산</b>과 <b>D+ inclusive 카운팅</b>(당일=1일, 100일=시작+99일) 같은 까다로운 도메인 로직을 예외 상황까지 고려해 구현했습니다.</span></div>
           <div class="pq"><span class="lab">Solution</span><span class="txt">타입·유틸·API를 packages로 분리해 웹과 모바일이 공유하도록 했습니다. <b>pg_cron 시간별 리마인더</b>, soft-delete 30일 유예, iCal 피드(안정 UID로 중복 제거), 타임존 처리까지 운영을 고려해 설계했습니다.</span></div>
