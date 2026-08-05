@@ -451,7 +451,7 @@
         <span class="line"><em>프론트엔드 개발자</em></span>
       </h1>
       <p class="hero-sub">
-        웹·데스크톱·모바일 프론트엔드를 만들어 왔습니다. Tiro에서 <b>실시간 전사 화면과 관리자 대시보드</b>를 맡았고, 개인적으로 만든 앱들을 App Store와 웹에 직접 출시했습니다.
+        웹·데스크톱·모바일 프론트엔드를 만들어 왔습니다. Tiro에서 <b>API 관리 콘솔과 B2B 조직 관리 화면</b>을 기획 협의부터 배포까지 단독으로 맡았고, 개인적으로 만든 앱들을 App Store와 웹에 직접 출시했습니다.
       </p>
       <div class="hero-meta">
         <span><span class="k">GITHUB</span> <a href="https://github.com/noyhkos" target="_blank" rel="noopener">github.com/noyhkos</a></span>
@@ -498,12 +498,18 @@
         </div>
         <div class="proj-body">
           <h3>더플레이토 — Tiro</h3>
-          <div class="role">Client Engineer · AI 실시간 전사 SaaS · 2025.08–2026.01</div>
+          <div class="role">Product Engineer · AI 실시간 전사 SaaS · 2025.08–2026.01</div>
 
           <div class="subproj">
             <div class="sp-head"><span class="sp-name">개발자 센터</span><a href="https://platform.tiro.ooo" target="_blank" rel="noopener">platform.tiro.ooo ↗</a></div>
-            <p>Tiro의 API·Webhook을 관리하는 <b>개발자 콘솔</b>을 기획·설계·배포까지 단독으로 맡았습니다. Clean Architecture(Repository·DI) 위에 TanStack Query로 서버 상태를 캐싱하고, <b>뮤테이션 후 관련 쿼리를 무효화</b>해 화면을 항상 최신 상태로 유지했습니다. SSR 인증(Google·Microsoft·Apple)과 shadcn/ui 디자인 시스템을 구축해 <b>10개 페이지를 단독으로 배포</b>했습니다.</p>
-            <div class="tags"><span>Next.js</span><span>React Query</span><span>shadcn/ui</span><span>SSR Auth</span><span>Clean Arch</span></div>
+            <p>Tiro의 API·Webhook을 관리하는 <b>개발자 콘솔</b>입니다. 백엔드와 API 스펙을 협의하며 화면 구성과 기능 범위를 주도하고, 구현부터 배포까지 단독으로 맡아 <b>화면 10개를 배포</b>했습니다. 사내 Clean Architecture 컨벤션(Repository·DI)을 신규 저장소에 이식하고, TanStack Query로 서버 상태를 캐싱하며 <b>뮤테이션 후 관련 쿼리를 무효화</b>해 화면을 항상 최신 상태로 유지했습니다. 쿼리 키를 personal·team 스코프로 나눠 개인 자원과 팀 자원이 서로의 캐시를 건드리지 않게 했습니다. 쿠키 기반 SSR 세션 가드로 미인증 접근을 막고, 소셜 로그인 3종(Google·Microsoft·Apple)을 연동했습니다.</p>
+            <div class="tags"><span>Next.js</span><span>React Query</span><span>SSR Auth</span><span>Clean Arch</span></div>
+          </div>
+
+          <div class="subproj">
+            <div class="sp-head"><span class="sp-name">조직 관리</span><a href="https://tiro.ooo" target="_blank" rel="noopener">tiro.ooo ↗</a></div>
+            <p>기업 고객이 구성원과 팀을 관리하는 <b>B2B 조직 관리 화면</b>을 개요·멤버·팀 3개 탭으로 구현했습니다. 멤버 초대와 권한 변경·제거, 팀 생성과 멤버 배정, 검색·정렬·통계까지 <b>화면부터 API 연동까지 단독</b>으로 맡았고, 탭 컴포넌트만 2,300줄 규모입니다. 검색은 디바운스로 입력마다 요청이 나가지 않게 했고, 팀 목록은 아코디언으로 접어 구성원이 많은 조직에서도 한 화면에 들어오도록 했습니다. 엔티티·API·리포지토리·유스케이스로 계층을 나눠 화면이 API 응답 모양에 직접 묶이지 않게 정리했습니다.</p>
+            <div class="tags"><span>B2B Admin</span><span>권한 관리</span><span>React Query</span><span>Clean Arch</span></div>
           </div>
 
           <div class="subproj">
@@ -513,14 +519,20 @@
           </div>
 
           <div class="subproj">
-            <div class="sp-head"><span class="sp-name">팀 사용량 대시보드</span><a href="https://tiro.ooo" target="_blank" rel="noopener">tiro.ooo ↗</a></div>
-            <p>팀 관리자가 <b>기간별·구성원별 사용량</b>을 조회하는 관리 화면을 만들었습니다. recharts로 시계열 추이를 그리고, 구성원별 집계 테이블을 함께 제공했습니다.</p>
+            <div class="sp-head"><span class="sp-name">사용량 조회 뷰</span><a href="https://tiro.ooo" target="_blank" rel="noopener">tiro.ooo ↗</a></div>
+            <p>팀 설정 안에서 관리자가 <b>기간별·구성원별 사용량</b>을 확인하는 화면입니다. recharts로 시계열 추이를 그리고, 구성원별 집계 테이블을 정렬 가능한 형태로 함께 제공했습니다.</p>
             <div class="tags"><span>recharts</span><span>데이터 시각화</span><span>Admin UI</span></div>
           </div>
 
           <div class="subproj">
-            <div class="sp-head"><span class="sp-name">테스트 인프라</span><span style="font-size:11.5px;color:var(--ink-faint);letter-spacing:0.02em">Tiro Client</span></div>
-            <p>빠르게 기능이 늘어나는 클라이언트에서 회귀를 막기 위해 <b>Vitest + React Testing Library</b>로 테스트 인프라를 만들었습니다. 컴포넌트·서비스·유틸리티를 계층별로 나눠 검증했습니다.</p>
+            <div class="sp-head"><span class="sp-name">Adobe Express 애드온</span><span style="font-size:11.5px;color:var(--ink-faint);letter-spacing:0.02em">Adobe 파트너십</span></div>
+            <p>Adobe 파트너십(약 1,400만원 규모)에 연계된 <b>Adobe Express 애드온 2종을 단독 개발</b>했습니다. 하나는 Express 안에서 음성·영상 파일을 올리면 Tiro가 전사해 텍스트로 돌려주는 애드온이고, 다른 하나는 텍스트에서 키워드를 뽑아 해시태그로 바꿔주는 애드온입니다. 업로드는 Pre-signed URL로 S3에 직접 올리고, 전사는 오래 걸리는 작업이라 폴링으로 상태를 추적하며 타임아웃까지 처리했습니다.</p>
+            <div class="tags"><span>Adobe Add-on SDK</span><span>Pre-signed URL</span><span>비동기 작업 추적</span></div>
+          </div>
+
+          <div class="subproj">
+            <div class="sp-head"><span class="sp-name">테스트 확대</span><span style="font-size:11.5px;color:var(--ink-faint);letter-spacing:0.02em">Tiro Client</span></div>
+            <p>빠르게 기능이 늘어나는 클라이언트에서 회귀를 막기 위해, 팀에 도입돼 있던 <b>Vitest + React Testing Library</b> 환경 위에서 컴포넌트·서비스·유틸리티 계층 테스트를 확대 작성했습니다.</p>
             <div class="tags"><span>Vitest</span><span>React Testing Library</span><span>계층별 검증</span></div>
           </div>
         </div>
@@ -537,7 +549,8 @@
           <div class="role">Full-stack · 1인 개발 · 폴리레포 4개 · 디자인 시스템 직접 구축</div>
           <div class="pq"><span class="lab">Problem</span><span class="txt">팀을 짤 때 역할 분담은 늘 감으로 정해집니다. 사주와 MBTI로 역할·궁합·팀 밸런스를 뽑아주는 <b>재미용 리포트</b>를 만들되, 그 뒤를 <b>백엔드·인프라 과제</b>로 삼았습니다.</span></div>
           <div class="pq"><span class="lab">Challenge</span><span class="txt">분석 한 건이 1분이 걸려 응답이 <b>47초</b>까지 늘어졌고, LLM은 <b>그럴듯하지만 우리 점수와 무관한 문장</b>을 만들어냈습니다. 설명과 계산이 어긋나면 리포트 전체의 신뢰가 무너집니다.</span></div>
-          <div class="pq"><span class="lab">Solution</span><span class="txt"><b>SQS로 분리</b>해 요청은 202로 즉시 반환하고(1.2초) 워커가 처리합니다. 점수는 <b>전부 결정론 공식</b>이라 모든 가감점이 근거와 함께 노출되고, LLM에는 <b>점수에 기여한 사실만</b> 넘겨 다른 모델이 검증한 문장만 서빙합니다.</span></div>
+          <div class="pq"><span class="lab">Solution</span><span class="txt"><b>SQS로 분리</b>해 요청은 202로 즉시 반환하고 워커가 뒤에서 처리합니다. 메시지는 작업이 끝난 뒤에만 삭제해 워커가 죽어도 재처리되고, 3회 실패하면 DLQ로 격리됩니다. 점수는 <b>전부 결정론 공식</b>이고 모든 가감점에 근거를 붙여 저장하며, 최고·최저 궁합 쌍의 근거는 리포트에 그대로 노출됩니다. LLM에는 <b>점수에 실제로 기여한 사실만</b> 넘기고, <b>생성과 다른 모델</b>이 문장별 주장을 근거와 대조해 통과한 것만 서빙합니다. 판정이 실패하면 결정론 템플릿으로 내려앉아, 검증되지 않은 문장은 나가지 않습니다.</span></div>
+          <div class="pq"><span class="lab">Frontend</span><span class="txt">컴포넌트 라이브러리 없이 <b>디자인 시스템을 직접 만들었습니다</b> — 토큰, 프리미티브 7종, 규칙 문서, 라이브 레퍼런스 페이지. 모바일에서 실제로 깨진 것을 규칙으로 고정했습니다: <b>iOS Safari는 16px 미만 입력에 포커스가 가면 페이지를 확대하고 되돌리지 않아</b> 모든 컨트롤을 16px로 묶었고, 탭 타겟 44px은 패딩이 아니라 높이로 강제했습니다. 대기 화면은 팀원이 들어오는 구간에도 폴링하고, 리포트 생성 후 명단이 바뀌면 <b>집합 비교</b>로 감지해 재분석을 제안합니다.</span></div>
           <div class="tags"><span>Kotlin</span><span>Spring Boot 4</span><span>PostgreSQL</span><span>AWS Lambda</span><span>SQS / DLQ</span><span>AWS CDK</span><span>Next.js 16</span><span>Tailwind v4</span><span>LLM 평가</span><span>디자인 시스템</span></div>
           <div class="plinks">
             <a href="https://teamsaju.com" target="_blank" rel="noopener">teamsaju.com <span class="arr">↗</span></a>
@@ -575,8 +588,9 @@
           <h3>daysmate</h3>
           <div class="role">Full-stack monorepo · 1인 개발 · 9주 · 404 commits</div>
           <div class="pq"><span class="lab">Problem</span><span class="txt">생일·100일·기일 같은 소중한 날을 놓치지 않게 이메일·푸시로 리마인드하는 서비스. 단, <b>한국식 날짜 규칙</b>을 정확히 다뤄야 했습니다.</span></div>
-          <div class="pq"><span class="lab">Challenge</span><span class="txt">웹·모바일·백엔드를 혼자 <b>Turborepo 모노레포</b>로 묶고, <b>음력·윤달 매년 재계산</b>과 <b>D+ inclusive 카운팅</b>(당일=1일, 100일=시작+99일) 같은 까다로운 도메인 로직을 예외 상황까지 고려해 구현했습니다.</span></div>
-          <div class="pq"><span class="lab">Solution</span><span class="txt">타입·유틸·API를 packages로 분리해 웹과 모바일이 공유하도록 했습니다. <b>pg_cron 시간별 리마인더</b>, soft-delete 30일 유예, iCal 피드(안정 UID로 중복 제거), 타임존 처리까지 운영을 고려해 설계했습니다.</span></div>
+          <div class="pq"><span class="lab">Challenge</span><span class="txt">웹·모바일·백엔드를 혼자 <b>Turborepo 모노레포</b>로 묶고, <b>음력 재계산</b>과 <b>D+ inclusive 카운팅</b>(당일=1일, 100일=시작+99일) 같은 한국식 날짜 규칙을 라이브러리 위에 설계했습니다. 음력 변환 자체는 검증된 라이브러리에 맡기고, 윤달 플래그를 저장·전파하는 규칙과 반복 일정 계산은 직접 짰습니다.</span></div>
+          <div class="pq"><span class="lab">Solution</span><span class="txt">타입·유틸·API를 packages로 분리해 웹과 앱이 같은 도메인 로직을 공유하도록 했습니다. 발송은 pg_cron이 주기적으로 호출하는 엣지 함수가 <b>1시간 윈도우로 대상을 판정</b>하고, (리마인더, 발생일) 유니크 제약으로 <b>중복 발송을 차단</b>합니다. soft-delete 30일 유예, iCal 피드(안정 UID로 중복 제거), 타임존 처리까지 운영을 고려해 설계했습니다.</span></div>
+          <div class="pq"><span class="lab">Design System</span><span class="txt">디자인 시스템을 <b>웹·모바일 두 벌로 구축</b>했습니다 — 컴포넌트 22종(웹 15 · 모바일 7)과 각각 230줄 규모의 규칙 문서, 그리고 살아있는 레퍼런스 역할을 하는 <code>/design-system</code> 라우트. 브랜드와 보이스는 공유하되 <b>타이포·레이아웃·인터랙션 규칙은 플랫폼별로 분리</b>했고, 색 토큰은 값이 아니라 키 목록을 공유해 한쪽에서 이름을 바꾸면 빌드가 깨지도록 했습니다.</span></div>
           <div class="tags"><span>Next.js 15</span><span>Expo / RN</span><span>Supabase</span><span>PostgreSQL</span><span>pg_cron</span><span>Turborepo</span><span>TypeScript</span></div>
           <div class="plinks">
             <a href="https://apps.apple.com/app/daysmate/id6782251580" target="_blank" rel="noopener">App Store <span class="arr">↗</span></a>
@@ -594,9 +608,9 @@
         <div class="proj-body">
           <h3>download-mate</h3>
           <div class="role">Desktop · Electron · 코드 서명 + 공증</div>
-          <div class="pq"><span class="lab">Problem</span><span class="txt">영상·오디오를 받는 데스크톱 도구가 필요해서 직접 만들었습니다.</span></div>
-          <div class="pq"><span class="lab">Challenge</span><span class="txt">단순 스크립트가 아니라 <b>실제 배포 가능한 데스크톱 앱</b>으로 만들기로 했습니다. macOS·Windows 양쪽 빌드를 구성하고, <b>macOS는 코드 서명·공증까지</b> 파이프라인으로 자동화했습니다.</span></div>
-          <div class="pq"><span class="lab">Solution</span><span class="txt">Electron + React + Vite로 구현하고, <b>macOS Developer ID 서명·공증과 Windows NSIS 설치 파일</b>까지 끝내 v1.0.0으로 릴리스했습니다. yt-dlp 자동 업데이트와 IPC prefetch를 포함했습니다.</span></div>
+          <div class="pq"><span class="lab">Problem</span><span class="txt">영상·오디오를 받는 데스크톱 도구가 필요해서 직접 만들었습니다. 스크립트로 끝내지 않고, <b>남에게 건네도 그냥 열리는 앱</b>까지 가보기로 했습니다.</span></div>
+          <div class="pq"><span class="lab">Challenge</span><span class="txt">그러려면 macOS는 서명과 공증을 거쳐야 하는데, <b>공증을 통과한 앱은 외부 바이너리 실행이 막힙니다</b>. 이 앱은 yt-dlp와 ffmpeg를 호출해야 동작합니다. 게다가 서명된 앱 번들은 수정할 수 없어, 번들 안에 넣은 바이너리는 <b>업데이트할 방법이 없습니다</b>.</span></div>
+          <div class="pq"><span class="lab">Solution</span><span class="txt">필요한 <b>entitlement만 골라 열어</b>(library validation 해제 등) 외부 바이너리가 실행되게 하고, 바이너리는 번들 밖 <b>사용자 디렉터리에 두어</b> GitHub 릴리스에서 받아 원자적으로 교체하도록 했습니다. macOS Developer ID 서명·공증과 Windows NSIS 설치 파일까지 마쳐 v1.0.0으로 릴리스했습니다. main·preload·renderer 각 계층과 다운로드·업데이트 로직에 <b>테스트 11개 파일</b>을 붙였습니다.</span></div>
           <div class="tags"><span>Electron</span><span>React</span><span>TypeScript</span><span>Vitest</span><span>electron-builder</span></div>
           <div class="plinks">
             <a href="https://github.com/noyhkos/download-mate" target="_blank" rel="noopener">GitHub <span class="arr">↗</span></a>
@@ -613,8 +627,8 @@
         <div class="proj-body">
           <h3>비블리 (BeeLit)</h3>
           <div class="role">EdTech 독서 퀴즈 앱 · 프론트엔드 기여 · 팀 프로젝트</div>
-          <div class="pq"><span class="lab">Context</span><span class="txt">스타트업이 만드는 <b>어린이 독서 퀴즈 앱</b>(App Store·Play 출시). 메인 개발자가 있는 공유 코드베이스에서 <b>일부 기능을 맡아</b> PR 리뷰를 거쳐 라이브 서비스에 반영했습니다.</span></div>
-          <div class="pq"><span class="lab">Owned</span><span class="txt"><b>포인트(XP) 게이미피케이션 시스템</b>을 화면부터 서버 검증까지 맡았습니다. 레벨 곡선·최고 점수 추적을 설계하고, Supabase 엣지 함수로 퀴즈 결과를 <b>서버에서 검증해 XP를 지급</b>한 뒤 결과 화면에 축하 애니메이션을 붙였습니다.</span></div>
+          <div class="pq"><span class="lab">Context</span><span class="txt">스타트업이 만드는 <b>어린이 독서 퀴즈 앱</b>(App Store·Play 출시). 메인 개발자가 있는 공유 코드베이스에 프론트엔드로 참여해, 맡은 기능은 PR 리뷰를 거쳐 라이브 서비스에 반영했습니다.</span></div>
+          <div class="pq"><span class="lab">Owned</span><span class="txt"><b>포인트(XP) 게이미피케이션</b>을 셀러브레이션 UI부터 서버 지급 로직까지 단독으로 구현했습니다. 난이도별 XP 공식을 설계하고 Supabase 엣지 함수에서 계산·지급하되, 지급 이력을 <b>append-only 이벤트로 쌓고 유니크 인덱스로 중복·재전송 지급을 차단</b>했습니다. 정답 수가 문항 수를 넘거나 음수로 들어오는 이상치도 클램핑으로 막고, 계산 로직은 단위 테스트로 고정했습니다.</span></div>
           <div class="pq"><span class="lab">Owned</span><span class="txt"><b>친구 초대(리퍼럴) 프로그램</b>을 코드 발급부터 다중 화면 초대 플로우, 상태 전이 UI, 10명 상한·공유/UTM 처리까지 구현했습니다.</span></div>
           <div class="tags"><span>React Native</span><span>Expo</span><span>Supabase Edge Functions</span><span>TypeScript</span><span>팀 협업 · PR</span></div>
           <div class="plinks">
