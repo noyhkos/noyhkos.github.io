@@ -22,6 +22,8 @@
     --c-scrollmate:#3478F6;
     --c-downloadmate:#2FA83C;
     --c-uipin:#57534E;
+    --c-contextmate:#6B4FA8;
+    --c-investmate:#1B4965;
   }
   @media (prefers-color-scheme:dark){
     :root{
@@ -29,6 +31,8 @@
       --line:#2E2A26; --paper:#141210; --card:#1C1917;
       --c-daysmate:#E4784F; --c-teamsaju:#4E9B77;
       --c-scrollmate:#5C9BFF; --c-downloadmate:#4CD35C; --c-uipin:#A8A29E;
+    --c-contextmate:#A48BE0;
+    --c-investmate:#6FA8CE;
     }
   }
 
@@ -179,13 +183,12 @@
         <li><b>기능 개발</b> Slack · 폴더 Automation, B2B Organization 관리(권한 · 시트 · 사용량 집계)의 클라이언트 구현.</li>
         <li><b>글로벌 SEO</b> 다국어 랜딩 페이지 구축 및 canonical/JSON-LD 최적화로 미국 검색 결과 내 로케일 오류 해결.</li>
         <li><b>신규 제품</b> 개발자 콘솔 웹(Tiro Developer Center) 및 Adobe Express 애드온 2종 단독 개발·출시.</li>
-        <li><b>코드 품질</b> 미사용 번역키·API와 any 타입을 단계적으로 제거하고 knip 도입으로 코드 부채 정리.</li>
       </ul>
     </article>
 
     <article class="job">
       <div class="job-head">
-        <h2 class="job-name">beliLabs — Beebli<span class="at">Contributing Engineer</span></h2>
+        <h2 class="job-name">beliLabs — Beebli<span class="at">Product Engineer</span></h2>
         <span class="job-when">2026.04 – 2026.06 · 3개월</span>
       </div>
       <p class="job-note"><a href="https://getbeelit.com/">getbeelit.com</a> — 아동 독서 퀴즈 앱 · React Native + Expo + Supabase</p>
@@ -201,105 +204,65 @@
     <p class="sec-label">Projects</p>
 
     <!-- ---------- Daysmate ---------- -->
-    <article class="proj" style="--accent:var(--c-daysmate);">
+    <!-- ---------- Contextmate ---------- -->
+    <article class="proj" style="--accent:var(--c-contextmate);">
       <div class="proj-top">
-        <h2 class="proj-name"><span class="dot"></span>Daysmate</h2>
-        <span class="job-when">2026.04 – 2026.08</span>
+        <h2 class="proj-name"><span class="dot"></span>Contextmate</h2>
+        <span class="job-when">2026.09</span>
       </div>
-      <p class="proj-role">1인 개발 · 웹 + iOS 앱 스토어 출시</p>
-      <p class="proj-desc">음력 기념일 리마인더 서비스</p>
+      <p class="proj-role">1인 개발 · 개인용 도구</p>
+      <p class="proj-desc">기기·세션에 상관없이 같은 맥락을 공유하는 개인 DB</p>
       <div class="links">
-        <a href="https://daysmate.com">daysmate.com</a>
+        <a href="https://contextmate-opal.vercel.app">contextmate-opal.vercel.app</a>
+      </div>
+
+<pre class="term"><span class="g">&gt;</span> 지난주에 캐시 만료 어떻게 나누기로 했지?
+
+  <span class="m">list_entries({ q: "캐시", from: "2026-08-20" })</span>
+  <span class="m">→ 1건</span>
+
+  <span class="m">get_entry({ id: "01K4…" })</span>
+  <span class="m">→ 2026-08-25 · investmate 캐시 전략</span>
+  <span class="m">  "확정된 과거 구간과 당월을 다른 만료로.</span>
+  <span class="m">   아카이브 30일, 꼬리 15분. 겹치는 날짜는 꼬리가 이긴다."</span>
+
+아카이브는 30일, 당월 꼬리는 15분으로 나누셨습니다.
+두 구간이 겹치는 날짜는 꼬리 쪽 값을 씁니다.</pre>
+
+      <ul class="pts">
+        <li><b>MCP 인증</b> HTTP + OAuth 기반 MCP 서버를 자체 구현하고 Protected Resource Metadata 라우트, 401 챌린지, JWKS 서명 검증을 직접 작성. 로그인·토큰 발급은 Supabase에 위임해 클라이언트가 URL 하나만 등록하도록 구성.</li>
+        <li><b>경로 통합</b> OAuth 도입 후 불필요해진 자체 토큰 경로와 stdio 프록시 패키지를 제거해 인증 진입점을 하나로 통합.</li>
+        <li><b>임베딩 배제</b> 서버가 청크 유사도로 고르는 것보다 클라이언트 LLM의 맥락 파악이 낫다고 판단해 임베딩을 제외. 목록 응답이 잘릴 경우 기간·종류·키워드 축을 함께 반환해 LLM이 다시 호출하도록 유도.</li>
+        <li><b>툴 구성</b> 읽기·쓰기·공유 11개 툴 제공. 삭제 지시가 사람의 클릭보다 흔들릴 수 있어 소프트 삭제로 처리하고 복구 경로 확보.</li>
+      </ul>
+      <p class="stack">Next.js 16 · Tailwind v4 · Supabase(Postgres · Storage · Auth · OAuth 2.1) · Deepgram nova-3 · MCP over Streamable HTTP · Vercel</p>
+    </article>
+
+    <!-- ---------- Investmate ---------- -->
+    <article class="proj" style="--accent:var(--c-investmate);">
+      <div class="proj-top">
+        <h2 class="proj-name"><span class="dot"></span>Investmate</h2>
+        <span class="job-when">2026.08</span>
+      </div>
+      <p class="proj-role">1인 개발 · Vercel 배포 운영</p>
+      <p class="proj-desc">원화 기준 장기투자 시세 대시보드</p>
+      <div class="links">
+        <a href="https://investmate-six.vercel.app">investmate-six.vercel.app</a>
       </div>
 
       <div class="shots">
-        <div class="shot wide"><img src="assets/daysmate-web.jpg" alt="Daysmate 웹 대시보드 — 달력과 기념일 타임라인, 음력·D-day 표시" loading="lazy" /></div>
-        <div class="shot phone"><img src="assets/daysmate-app-1.jpg" alt="Daysmate iOS 앱 홈 화면" loading="lazy" /></div>
-        <div class="shot phone"><img src="assets/daysmate-app-2.jpg" alt="Daysmate iOS 앱 이벤트 화면" loading="lazy" /></div>
+        <div class="shot wide"><img src="assets/investmate-dashboard.jpg" alt="Investmate 대시보드 — 주식·금·은·환율·비트코인 타일을 10년 구간으로 나란히 비교" loading="lazy" /></div>
       </div>
 
       <ul class="pts">
-        <li><b>하이브리드 앱</b> 같은 화면을 웹과 앱에 두 벌 유지하는 비용 때문에 React Native 전체 구현을 네이티브 셸(인증/푸시) + WebView 구조로 전환. Next.js 클라이언트 라우팅을 네이티브 스택이 인지하지 못하는 문제를 history.pushState 인터셉트로 해결해 화면 코드를 웹과 공유.</li>
-        <li><b>파이프라인</b> Supabase pg_cron + Edge Function 연동으로 푸시 및 이메일 발송 자동화.</li>
-        <li><b>i18n 자동화</b> ts-morph 기반 AST 스크립트를 작성해 하드코딩된 다국어 문자열 추출 및 번역 프로세스 자동화.</li>
+        <li><b>리전 일치</b> 미국 동부의 서버리스 함수와 서울의 데이터베이스 간 왕복 지연을 막기 위해 배포 리전을 서울로 고정해 문서 응답을 3,700ms → 488ms로 단축.</li>
+        <li><b>페이로드 축소</b> 미사용 필드 제거, 객체 배열의 병렬 배열 변환, 소수점 2자리 제한을 적용해 전송량을 142KB → 17KB로 축소.</li>
+        <li><b>RSC 최적화</b> 동적 라우트의 사전 로드 소요가 클릭 후와 같음을 네 번 측정해 확인하고 Link 프리페치를 꺼 페이지 로드당 RSC 요청을 11건 → 0건으로 제거.</li>
+        <li><b>캐시 분리</b> 확정된 과거 종가가 당일 봉과 같은 주기로 버려지는 문제를 막기 위해 과거 구간과 당월 구간으로 캐시를 나눠 비싼 조회를 시간당 1회 → 월 1회로 축소.</li>
       </ul>
-      <p class="stack">Next.js 15 · Expo · Supabase · PostgreSQL · Turborepo · ts-morph · Vercel</p>
+      <p class="stack">Next.js · Supabase · Vercel</p>
     </article>
 
-    <!-- ---------- TeamworkMate ---------- -->
-    <article class="proj" style="--accent:var(--c-teamsaju);">
-      <div class="proj-top">
-        <h2 class="proj-name"><span class="dot"></span>TeamworkMate</h2>
-        <span class="job-when">2026.07 – 2026.08</span>
-      </div>
-      <p class="proj-role">1인 개발 · 풀스택 서비스 배포</p>
-      <p class="proj-desc">사주 × MBTI 팀 궁합 리포트</p>
-      <div class="links">
-        <a href="https://teamsaju.com">teamsaju.com</a>
-        <a href="https://github.com/noyhkos/teamwork-mate-api">GitHub</a>
-      </div>
-
-      <div class="shots">
-        <div class="shot wide"><img src="assets/teamsaju-report.jpg" alt="TeamworkMate 팀 궁합 리포트 화면 — 요약 탭과 관계 다각형" loading="lazy" /></div>
-        <div class="shot card"><img src="assets/teamsaju-card.jpg" alt="TeamworkMate 공유 카드 이미지" loading="lazy" /></div>
-      </div>
-
-      <ul class="pts">
-        <li><b>비동기 인프라</b> 분석 로직을 AWS SQS 워커로 분리해 API 응답 시간을 47초 → 1.2초로 단축 (97% 개선).</li>
-        <li><b>안정성</b> 3회 실패 시 DLQ 격리 및 AWS Lambda Web Adapter 기반 컨테이너 분기 구동 환경을 CDK로 코드화.</li>
-        <li><b>LLM 검증</b> 생성 모델과 교차 검증(Judge) 모델을 분리해 미검증 문장 차단 및 정적 템플릿 폴백 파이프라인 구축.</li>
-      </ul>
-      <p class="stack">Kotlin · Spring Boot · JPA · Flyway · AWS CDK · Lambda · SQS/DLQ · PostgreSQL(Neon) · Next.js · Fastify</p>
-    </article>
-
-    <!-- ---------- Scrollmate ---------- -->
-    <article class="proj" style="--accent:var(--c-scrollmate);">
-      <div class="proj-top">
-        <h2 class="proj-name"><span class="dot"></span>Scrollmate</h2>
-        <span class="job-when">2026.02 – 2026.04</span>
-      </div>
-      <p class="proj-role">1인 개발 · iOS 앱 스토어 출시 &amp; Open Source</p>
-      <p class="proj-desc">Swift 기반 스크린타임 체크인 앱 · 서드파티 의존성 0개</p>
-      <div class="links">
-        <a href="https://apps.apple.com/app/id6762578910">App Store</a>
-        <a href="https://github.com/noyhkos/scrollmate">GitHub</a>
-      </div>
-
-      <div class="shots">
-        <div class="shot lg"><img src="assets/scrollmate-app.jpg" alt="Scrollmate 앱 본화면 — 세션 타이머와 오늘의 기록" loading="lazy" /></div>
-        <div class="shot lg"><img src="assets/scrollmate-cc.jpg" alt="앱 · 위젯 · Control Center · 잠금화면 네 개 진입점이 동기화되는 구조" loading="lazy" /></div>
-      </div>
-
-      <ul class="pts">
-        <li><b>IPC 동기화</b> 앱·위젯·Control Center 간 상태 동기화를 위해 Darwin Notification IPC 및 SyncEngine 구축.</li>
-        <li><b>예외 처리</b> iOS 로컬 알림 64개 제한을 예약 큐 보충 로직으로 우회.</li>
-      </ul>
-      <p class="stack">Swift 6 · SwiftUI · WidgetKit · AppIntents · ControlWidget · StoreKit 2 · Darwin Notification IPC</p>
-    </article>
-
-    <!-- ---------- Download Mate ---------- -->
-    <article class="proj" style="--accent:var(--c-downloadmate);">
-      <div class="proj-top">
-        <h2 class="proj-name"><span class="dot"></span>Download Mate</h2>
-        <span class="job-when">2026.03 – 2026.04</span>
-      </div>
-      <p class="proj-role">1인 개발 · 데스크톱 앱</p>
-      <p class="proj-desc">macOS · Windows 데스크톱 다운로더</p>
-      <div class="links">
-        <a href="https://github.com/noyhkos/download-mate">GitHub</a>
-      </div>
-
-      <div class="shots">
-        <div class="shot wide"><img src="assets/downloadmate.jpg" alt="Download Mate 데스크톱 앱 화면" loading="lazy" /></div>
-      </div>
-
-      <ul class="pts">
-        <li><b>배포 파이프라인</b> macOS Developer ID 서명 · 공증 파이프라인을 갖춘 Electron 앱. Hardened Runtime에서 서명되지 않은 외부 바이너리 실행을 허용해 공증 통과와 다운로드 동작을 동시에 충족.</li>
-      </ul>
-      <p class="stack">Electron 40 · electron-vite · electron-builder · React 18 · TypeScript · Vitest</p>
-    </article>
-
-    <!-- ---------- uipin ---------- -->
     <article class="proj" style="--accent:var(--c-uipin);">
       <div class="proj-top">
         <h2 class="proj-name"><span class="dot"></span>uipin</h2>
@@ -329,7 +292,106 @@
       <p class="stack">TypeScript · MCP(Model Context Protocol) · React</p>
     </article>
 
-  </section>
+      <article class="proj" style="--accent:var(--c-teamsaju);">
+      <div class="proj-top">
+        <h2 class="proj-name"><span class="dot"></span>TeamworkMate</h2>
+        <span class="job-when">2026.07 – 2026.08</span>
+      </div>
+      <p class="proj-role">1인 개발 · 풀스택 서비스 배포</p>
+      <p class="proj-desc">사주 × MBTI 팀 궁합 리포트</p>
+      <div class="links">
+        <a href="https://teamsaju.com">teamsaju.com</a>
+        <a href="https://github.com/noyhkos/teamwork-mate-api">GitHub</a>
+      </div>
+
+      <div class="shots">
+        <div class="shot wide"><img src="assets/teamsaju-report.jpg" alt="TeamworkMate 팀 궁합 리포트 화면 — 요약 탭과 관계 다각형" loading="lazy" /></div>
+        <div class="shot card"><img src="assets/teamsaju-card.jpg" alt="TeamworkMate 공유 카드 이미지" loading="lazy" /></div>
+      </div>
+
+      <ul class="pts">
+        <li><b>비동기 인프라</b> 분석 로직을 AWS SQS 워커로 분리해 API 응답 시간을 47초 → 1.2초로 단축 (97% 개선).</li>
+        <li><b>안정성</b> 3회 실패 시 DLQ 격리 및 AWS Lambda Web Adapter 기반 컨테이너 분기 구동 환경을 CDK로 코드화.</li>
+        <li><b>LLM 검증</b> 생성 모델과 교차 검증(Judge) 모델을 분리해 미검증 문장 차단 및 정적 템플릿 폴백 파이프라인 구축.</li>
+      </ul>
+      <p class="stack">Kotlin · Spring Boot · JPA · Flyway · AWS CDK · Lambda · SQS/DLQ · PostgreSQL(Neon) · Next.js · Fastify</p>
+    </article>
+
+    <!-- ---------- Scrollmate ---------- -->
+    <article class="proj" style="--accent:var(--c-daysmate);">
+      <div class="proj-top">
+        <h2 class="proj-name"><span class="dot"></span>Daysmate</h2>
+        <span class="job-when">2026.04 – 2026.08</span>
+      </div>
+      <p class="proj-role">1인 개발 · 웹 + iOS 앱 스토어 출시</p>
+      <p class="proj-desc">음력 기념일 리마인더 서비스</p>
+      <div class="links">
+        <a href="https://daysmate.com">daysmate.com</a>
+      </div>
+
+      <div class="shots">
+        <div class="shot wide"><img src="assets/daysmate-web.jpg" alt="Daysmate 웹 대시보드 — 달력과 기념일 타임라인, 음력·D-day 표시" loading="lazy" /></div>
+        <div class="shot phone"><img src="assets/daysmate-app-1.jpg" alt="Daysmate iOS 앱 홈 화면" loading="lazy" /></div>
+        <div class="shot phone"><img src="assets/daysmate-app-2.jpg" alt="Daysmate iOS 앱 이벤트 화면" loading="lazy" /></div>
+      </div>
+
+      <ul class="pts">
+        <li><b>하이브리드 앱</b> 같은 화면을 웹과 앱에 두 벌 유지하는 비용 때문에 React Native 전체 구현을 네이티브 셸(인증/푸시) + WebView 구조로 전환. Next.js 클라이언트 라우팅을 네이티브 스택이 인지하지 못하는 문제를 history.pushState 인터셉트로 해결해 화면 코드를 웹과 공유.</li>
+        <li><b>파이프라인</b> Supabase pg_cron + Edge Function 연동으로 푸시 및 이메일 발송 자동화.</li>
+        <li><b>i18n 자동화</b> ts-morph 기반 AST 스크립트를 작성해 하드코딩된 다국어 문자열 추출 및 번역 프로세스 자동화.</li>
+      </ul>
+      <p class="stack">Next.js 15 · Expo · Supabase · PostgreSQL · Turborepo · ts-morph · Vercel</p>
+    </article>
+
+    <!-- ---------- TeamworkMate ---------- -->
+    <article class="proj" style="--accent:var(--c-downloadmate);">
+      <div class="proj-top">
+        <h2 class="proj-name"><span class="dot"></span>Download Mate</h2>
+        <span class="job-when">2026.03 – 2026.04</span>
+      </div>
+      <p class="proj-role">1인 개발 · 데스크톱 앱</p>
+      <p class="proj-desc">macOS · Windows 데스크톱 다운로더</p>
+      <div class="links">
+        <a href="https://github.com/noyhkos/download-mate">GitHub</a>
+      </div>
+
+      <div class="shots">
+        <div class="shot wide"><img src="assets/downloadmate.jpg" alt="Download Mate 데스크톱 앱 화면" loading="lazy" /></div>
+      </div>
+
+      <ul class="pts">
+        <li><b>배포 파이프라인</b> macOS Developer ID 서명 · 공증 파이프라인을 갖춘 Electron 앱. Hardened Runtime에서 서명되지 않은 외부 바이너리 실행을 허용해 공증 통과와 다운로드 동작을 동시에 충족.</li>
+      </ul>
+      <p class="stack">Electron 40 · electron-vite · electron-builder · React 18 · TypeScript · Vitest</p>
+    </article>
+
+    <!-- ---------- uipin ---------- -->
+    <article class="proj" style="--accent:var(--c-scrollmate);">
+      <div class="proj-top">
+        <h2 class="proj-name"><span class="dot"></span>Scrollmate</h2>
+        <span class="job-when">2026.02 – 2026.04</span>
+      </div>
+      <p class="proj-role">1인 개발 · iOS 앱 스토어 출시 &amp; Open Source</p>
+      <p class="proj-desc">Swift 기반 스크린타임 체크인 앱 · 서드파티 의존성 0개</p>
+      <div class="links">
+        <a href="https://apps.apple.com/app/id6762578910">App Store</a>
+        <a href="https://github.com/noyhkos/scrollmate">GitHub</a>
+      </div>
+
+      <div class="shots">
+        <div class="shot lg"><img src="assets/scrollmate-app.jpg" alt="Scrollmate 앱 본화면 — 세션 타이머와 오늘의 기록" loading="lazy" /></div>
+        <div class="shot lg"><img src="assets/scrollmate-cc.jpg" alt="앱 · 위젯 · Control Center · 잠금화면 네 개 진입점이 동기화되는 구조" loading="lazy" /></div>
+      </div>
+
+      <ul class="pts">
+        <li><b>IPC 동기화</b> 앱·위젯·Control Center 간 상태 동기화를 위해 Darwin Notification IPC 및 SyncEngine 구축.</li>
+        <li><b>예외 처리</b> iOS 로컬 알림 64개 제한을 예약 큐 보충 로직으로 우회.</li>
+      </ul>
+      <p class="stack">Swift 6 · SwiftUI · WidgetKit · AppIntents · ControlWidget · StoreKit 2 · Darwin Notification IPC</p>
+    </article>
+
+    <!-- ---------- Download Mate ---------- -->
+</section>
 
   <footer>
     <span>김석현 · Front-End &amp; Product Engineer</span>
